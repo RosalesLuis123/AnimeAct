@@ -9,7 +9,7 @@ Proyecto construido con **Angular + Node.js (Express) + PostgreSQL**.
 
 | Área | Tecnología |
 |------|-------------|
-| Frontend | Angular 17+ |
+| Frontend | Angular 14+ |
 | Backend | Node.js + Express |
 | Base de datos | PostgreSQL |
 | Autenticación | JWT (JSON Web Token) |
