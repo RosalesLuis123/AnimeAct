@@ -1,6 +1,6 @@
 # 🎌 AnimeAct — Seguimiento de Animes
 
-Aplicación web para gestionar tus animes: marcarlos como *Viendo*, *Favorito*, *Terminado* o *Ver después*.  
+Aplicación web para gestionar tus animes: marcarlos como *Viendo*, *Favorito*, *Terminado* o *Ver después* y Sacar animes por: Categoria y Calendario de emision.
 Proyecto construido con **Angular + Node.js (Express) + PostgreSQL**.
 
 ---
