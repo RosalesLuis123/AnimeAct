@@ -40,7 +40,7 @@ Antes de comenzar, asegúrate de tener instalado:
 - 🟢 **Node.js** (v18 o superior)  
 - 🐘 **PostgreSQL** (v14 o superior)  
 - 🧰 **pgAdmin** o **psql** (para ejecutar scripts SQL)
-- ⚙️ **Angular CLI** (`npm install -g @angular/cli`)
+- ⚙️ **Angular CLI 14** (`npm install -g @angular/cli@14`)
 
 ---
 
