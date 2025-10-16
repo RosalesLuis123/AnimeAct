@@ -1,0 +1,30 @@
+<div class="sidebar-overlay" *ngIf="visible" (click)="closeSidebar()"></div>
+
+<aside class="sidebar" [class.show]="visible" role="complementary" [attr.aria-hidden]="!visible">
+  <div class="sidebar-header">
+    <h2>Explorar</h2>
+    <button class="close-btn" (click)="closeSidebar()">✕</button>
+  </div>
+
+  <div class="sidebar-content">
+    <div class="menu-section">
+      <h3 routerLink="/">Inicio</h3>
+    </div>
+    <div class="menu-section">
+      <h3 (click)="toggleCategories()">
+        Categorías
+        <span [class.rotate]="showCategories">▼</span>
+      </h3>
+
+      <ul *ngIf="showCategories" class="submenu">
+        <li *ngFor="let cat of categories" (click)="navigateCategory(cat)">
+          {{ cat }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="menu-section">
+      <h3 routerLink="/calendar">Calendario</h3>
+    </div>
+  </div>
+</aside>

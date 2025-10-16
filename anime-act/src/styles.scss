@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --radius: 8px;
+  --shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+/* al inicio del styles.scss */
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* evita scroll horizontal por desbordes */
+}
+
+/* overlay global (por si) */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 999;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Outfit', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  padding: .7rem 1.4rem;
+  transition: background .2s ease;
+  &:hover { background: var(--primary-hover); }
+}
+
+input {
+  background: var(--surface);
+  border: 1px solid #334155;
+  border-radius: var(--radius);
+  color: var(--text);
+  padding: .7rem 1rem;
+  width: 100%;
+  margin-bottom: 1rem;
+  outline: none;
+  &:focus { border-color: var(--primary); }
+}
+
+.auth {
+  max-width: 420px;
+  margin: 4rem auto;
+  background: var(--surface);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+
+  h2 { margin-bottom: 1.5rem; font-weight: 600; }
+  .error { color: #f87171; margin-top: 1rem; font-size: .9rem; }
+}

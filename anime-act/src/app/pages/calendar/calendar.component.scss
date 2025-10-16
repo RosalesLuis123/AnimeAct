@@ -1,0 +1,37 @@
+.home-layout {
+  display: flex;
+  background: #0a0c14;
+  color: #fff;
+  min-height: calc(100vh - 70px);
+}
+
+.home-content {
+  flex: 1 1 auto;
+  padding: 2rem 2.5rem;
+  overflow: hidden;
+  max-width: 100%;
+
+  .page-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #ff4e88;
+  }
+
+  .anime-sections {
+    .section {
+      margin-bottom: 2.5rem;
+
+      h2 {
+        color: white;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .loading {
+    text-align: center;
+    padding: 4rem;
+    color: #888;
+  }
+}

@@ -1,0 +1,14 @@
+<div class="home-layout">
+  <app-sidebar></app-sidebar>
+
+  <div class="home-content">
+    <h1 class="page-title">Explora los Mejores Animes</h1>
+
+    <div class="anime-sections">
+      <div *ngFor="let section of sections" class="section">
+        <h2>{{ section.title }}</h2>
+        <app-carousel-anime [category]="section.type"></app-carousel-anime>
+      </div>
+    </div>
+  </div>
+</div>

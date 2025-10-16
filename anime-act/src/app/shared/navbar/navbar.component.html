@@ -1,0 +1,14 @@
+<nav class="navbar">
+  <div class="nav-left">
+    <button class="menu-btn" (click)="toggleSidebar()">☰</button>
+    <h1 class="brand" routerLink="/">Anime ACT</h1>
+  </div>
+
+  <div class="nav-right">
+    <a routerLink="/">Inicio</a>
+    <a routerLink="/dashboard">Dashboard</a>
+    <a routerLink="/login" *ngIf="!authService.isLoggedIn()">Login</a>
+    <a routerLink="/register" *ngIf="!authService.isLoggedIn()">Registro</a>
+    <a (click)="logout()" *ngIf="authService.isLoggedIn()">Salir</a>
+  </div>
+</nav>

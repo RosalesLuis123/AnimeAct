@@ -1,0 +1,34 @@
+.home-layout {
+  display: flex;
+  background: #0a0c14;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.home-content {
+  flex: 1;
+  padding: 2rem 3rem;
+
+  .page-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #ff4e88;
+  }
+
+  .section {
+    margin-bottom: 2.5rem;
+  }
+}
+.home-layout {
+  display: flex;
+  min-height: calc(100vh - 70px);
+  background: #0a0c14;
+  color: #fff;
+}
+
+.home-content {
+  flex: 1 1 auto;
+  padding: 2rem 2.5rem;
+  overflow: hidden; /* evita que hijos provoquen scroll horizontal en el contenedor principal */
+  max-width: 100%;
+}

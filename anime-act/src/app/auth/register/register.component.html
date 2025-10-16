@@ -1,0 +1,118 @@
+<div class="register-container">
+  <div class="register-card">
+    <h2>Crear Nueva Cuenta</h2>
+    <p class="subtitle">Regístrate para comenzar a trackear tus animes</p>
+
+    <!-- Mensajes de éxito/error -->
+    <div *ngIf="success" class="alert alert-success">
+      <i class="icon">✅</i>
+      {{ success }}
+    </div>
+
+    <div *ngIf="error" class="alert alert-error">
+      <i class="icon">❌</i>
+      {{ error }}
+    </div>
+
+    <!-- Formulario de registro -->
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      
+      <!-- Username -->
+      <div class="form-group">
+        <label>Nombre de usuario</label>
+        <input 
+          type="text" 
+          formControlName="username"
+          placeholder="Elige un nombre de usuario"
+          class="form-control"
+          [class.error]="username.invalid && username.touched">
+        
+        <div *ngIf="username.invalid && username.touched" class="error-messages">
+          <small *ngIf="username.errors?.['required']">
+            El nombre de usuario es obligatorio
+          </small>
+          <small *ngIf="username.errors?.['minlength']">
+            Mínimo 3 caracteres
+          </small>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label>Correo electrónico</label>
+        <input 
+          type="email" 
+          formControlName="email"
+          placeholder="tu@email.com"
+          class="form-control"
+          [class.error]="email.invalid && email.touched">
+        
+        <div *ngIf="email.invalid && email.touched" class="error-messages">
+          <small *ngIf="email.errors?.['required']">
+            El email es obligatorio
+          </small>
+          <small *ngIf="email.errors?.['email']">
+            Formato de email inválido
+          </small>
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input 
+          type="password" 
+          formControlName="password"
+          placeholder="Mínimo 6 caracteres"
+          class="form-control"
+          [class.error]="password.invalid && password.touched">
+        
+        <div *ngIf="password.invalid && password.touched" class="error-messages">
+          <small *ngIf="password.errors?.['required']">
+            La contraseña es obligatoria
+          </small>
+          <small *ngIf="password.errors?.['minlength']">
+            Mínimo 6 caracteres
+          </small>
+        </div>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="form-group">
+        <label>Confirmar contraseña</label>
+        <input 
+          type="password" 
+          formControlName="confirmPassword"
+          placeholder="Repite tu contraseña"
+          class="form-control"
+          [class.error]="(confirmPassword.invalid && confirmPassword.touched) || passwordMismatch">
+        
+        <div *ngIf="confirmPassword.invalid && confirmPassword.touched" class="error-messages">
+          <small *ngIf="confirmPassword.errors?.['required']">
+            Debes confirmar tu contraseña
+          </small>
+        </div>
+        
+        <small *ngIf="passwordMismatch" class="error-text">
+          <i class="icon">⚠️</i> Las contraseñas no coinciden
+        </small>
+      </div>
+
+      <!-- Botón submit -->
+      <button 
+        type="submit" 
+        class="btn-primary btn-block"
+        [disabled]="loading || form.invalid || !passwordsMatch">
+        <span *ngIf="loading" class="spinner">⏳</span>
+        {{ loading ? 'Creando cuenta...' : 'Crear Cuenta' }}
+      </button>
+    </form>
+
+    <!-- Link a login -->
+    <div class="login-link">
+      <p>¿Ya tienes cuenta? 
+        <a routerLink="/login" routerLinkActive="active">Inicia sesión aquí</a>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+.carousel {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 1rem;
+  margin: 0 -0.5rem; /* evita que barras laterales añadan scroll horizontal inesperado */
+
+  .carousel-track {
+    display: flex;
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .anime-card {
+    flex: 0 0 200px; /* tamaño fijo más cómodo */
+    max-width: 200px;
+    min-width: 200px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+    box-shadow: var(--shadow);
+
+    img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .title {
+      padding: 0.6rem 0.8rem;
+      font-size: 0.9rem;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .no-data, .loading {
+    color: var(--muted);
+    text-align: center;
+    padding: 2rem;
+  }
+}

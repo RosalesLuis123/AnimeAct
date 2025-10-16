@@ -1,0 +1,30 @@
+<div class="home-content">
+    <app-sidebar></app-sidebar>
+
+  <h1 class="page-title">📅 Calendario Semanal</h1>
+
+  <div class="anime-sections" *ngIf="!loading">
+    <div *ngFor="let section of sections" class="section">
+      <h2>{{ section.title }}
+        <span *ngIf="section.animes.length" class="count">
+          ({{ section.animes.length }})
+        </span>
+      </h2>
+      
+      <!-- ✅ PASAR animes como animesInput -->
+      <app-carousel-anime 
+        *ngIf="section.animes.length > 0"
+        [category]="section.type"
+        [animesInput]="section.animes">
+      </app-carousel-anime>
+      
+      <p *ngIf="!section.animes.length" class="empty">
+        Sin emisiones esta semana
+      </p>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <p>Cargando calendario...</p>
+  </div>
+</div>

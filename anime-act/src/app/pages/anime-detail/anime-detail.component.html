@@ -1,0 +1,31 @@
+<div *ngIf="loading" class="loading">Cargando información...</div>
+
+<div *ngIf="!loading" class="anime-detail">
+  <div class="header">
+    <img [src]="anime.images?.jpg?.image_url" [alt]="anime.title" />
+    <div class="info">
+      <h1>{{ anime.title }}</h1>
+      <p class="score">⭐ {{ anime.score || 'N/A' }}</p>
+      <p class="episodes">📺 Episodios: {{ anime.episodes || 'Desconocido' }}</p>
+      <p class="status">📅 Estado: {{ anime.status }}</p>
+      <p>{{ anime.synopsis }}</p>
+
+      <div class="anime-actions">
+        <button (click)="updateStatus('viendo')" class="btn viendo">▶️ Viendo</button>
+        <button (click)="updateStatus('favorito')" class="btn favorito">💖 Favorito</button>
+        <button (click)="updateStatus('terminado')" class="btn terminado">✅ Terminado</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="anime.trailer?.embed_url" class="trailer">
+    <h2>🎬 Tráiler</h2>
+    <iframe
+      width="100%"
+      height="400"
+      [src]="anime.trailer.embed_url | safeUrl"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>

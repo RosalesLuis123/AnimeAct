@@ -1,0 +1,10 @@
+<div *ngIf="loading" class="loading">Cargando...</div>
+
+<div class="carousel" *ngIf="!loading">
+  <div class="carousel-track">
+    <div *ngFor="let anime of animes" class="anime-card" (click)="verDetalles(anime.mal_id)">
+      <img [src]="anime.images.jpg.image_url" [alt]="anime.title" />
+      <p class="title">{{ anime.title }}</p>
+    </div>
+  </div>
+</div>
