@@ -48,7 +48,7 @@ Antes de comenzar, asegúrate de tener instalado:
 
 1️⃣ **Clona este repositorio:**
 ```bash
-git clone https://github.com/RosalesLuis123/anime-act.git
+git clone https://github.com/RosalesLuis123/AnimeAct
 cd anime-act/anime-act-backend'
 ```
 2️⃣ **Instala las dependencias:**
