@@ -47,16 +47,18 @@ Antes de comenzar, asegúrate de tener instalado:
 ## ⚙️ Instalación del Backend
 
 1️⃣ **Clona este repositorio:**
+```bash
 git clone https://github.com/tuusuario/anime-act.git
 cd anime-act/anime-act-backend'
+```
 2️⃣ **Instala las dependencias:**
-
+```bash
 npm install
-
+```
 
 3️⃣ Configura tu archivo .env:
 Crea un archivo .env dentro de anime-act-backend/ con el siguiente contenido:
-
+```bash
 PORT=4000
 DB_USER=postgres
 DB_PASSWORD=tu_password
@@ -64,12 +66,12 @@ DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=anime_act
 JWT_SECRET=anime-act-secret-2024
-
+```
 
 4️⃣ Ejecuta el servidor:
-
+```bash
 npm run dev
-
+```
 
 Si todo va bien, deberías ver:
 
@@ -80,9 +82,9 @@ Si todo va bien, deberías ver:
 
 1️⃣ Abre pgAdmin o tu terminal de psql
 2️⃣ Ejecuta el script de base de datos incluido:
-
+```bash
 psql -U postgres -f database/anime_act_schema.sql
-
+```
 
 Esto creará automáticamente:
 
