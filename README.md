@@ -19,7 +19,7 @@ Proyecto construido con **Angular + Node.js (Express) + PostgreSQL**.
 ---
 
 ## 📂 Estructura del Proyecto
-
+```bash
 anime-act/
 ├── anime-act-frontend/ # Proyecto Angular
 │ ├── src/app/
@@ -30,7 +30,7 @@ anime-act/
 │ └── .env
 └── database/
 └── anime_act_schema.sql # Script para crear la BD
-
+```
 ---
 
 ## 🧠 Requisitos Previos
