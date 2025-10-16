@@ -45,6 +45,7 @@
     margin-top: 20px;
     display: flex;
     gap: 12px;
+    
 
     .btn {
       padding: 8px 16px;
@@ -58,6 +59,7 @@
       &.viendo { background: #007bff; }
       &.favorito { background: #e83e8c; }
       &.terminado { background: #28a745; }
+      .ver-despues { background-color: #f39c12; }
 
       &:hover {
         opacity: 0.85;
@@ -65,6 +67,16 @@
       }
     }
   }
+.anime-actions .btn {
+  opacity: 0.5;
+  transition: all 0.2s ease-in-out;
+}
+
+.anime-actions .btn.active {
+  opacity: 1;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #ffcc00;
+}
 
   .trailer {
     margin-top: 30px;

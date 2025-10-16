@@ -11,9 +11,10 @@
       <p>{{ anime.synopsis }}</p>
 
       <div class="anime-actions">
-        <button (click)="updateStatus('viendo')" class="btn viendo">▶️ Viendo</button>
-        <button (click)="updateStatus('favorito')" class="btn favorito">💖 Favorito</button>
-        <button (click)="updateStatus('terminado')" class="btn terminado">✅ Terminado</button>
+        <button (click)="toggleStatus('viendo')" [class.active]="isActive('viendo')" class="btn viendo">▶️ Viendo</button>
+        <button (click)="toggleStatus('favorito')" [class.active]="isActive('favorito')" class="btn favorito">💖 Favorito</button>
+        <button (click)="toggleStatus('terminado')" [class.active]="isActive('terminado')" class="btn terminado">✅ Terminado</button>
+        <button (click)="toggleStatus('ver despues')" [class.active]="isActive('ver despues')" class="btn ver-despues">🕒 Ver después</button>
       </div>
     </div>
   </div>

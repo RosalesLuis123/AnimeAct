@@ -4,19 +4,22 @@
   <div *ngIf="loadingAnimes" class="loading">Cargando animes...</div>
 
   <div class="dashboard-sections" *ngIf="!loadingAnimes">
-    <div class="section" *ngFor="let s of ['viendo', 'favorito', 'terminado']">
-      <h2>{{ s | titlecase }}</h2>
-      <div class="anime-list">
-        <div class="anime-card" *ngFor="let anime of filterByStatus(s)">
-          <img [src]="anime.image_url" [alt]="anime.title" class="anime-image" />
-          <p><strong>Título:</strong> {{ anime.title }}</p>
-          <p><strong>Estado:</strong> {{ anime.status }}</p>
-          <p><strong>Última actualización:</strong> {{ anime.updated_at | date:'short' }}</p>
-        </div>
-        <p *ngIf="filterByStatus(s).length === 0" class="empty">Sin animes en esta categoría.</p>
-      </div>
+  <div class="section" *ngFor="let s of ['viendo', 'favorito', 'terminado', 'ver despues']">
+    <h2>{{ s | titlecase }}</h2>
+    <div class="anime-list">
+      <div class="anime-card" *ngFor="let anime of filterByStatus(s)">
+  <img [src]="anime.image_url" [alt]="anime.title" class="anime-image" />
+  <p><strong>Título:</strong> {{ anime.title }}</p>
+  <p><strong>Estado:</strong> {{ anime.status }}</p>
+  <p><strong>Última actualización:</strong> {{ anime.updated_at | date:'short' }}</p>
+  <button (click)="removeStatus(anime)" class="btn-remove">🗑️ Quitar</button>
+</div>
+
+      <p *ngIf="filterByStatus(s).length === 0" class="empty">Sin animes en esta categoría.</p>
     </div>
   </div>
+</div>
+
 </div>
 
 <ng-template #notLogged>

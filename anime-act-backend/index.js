@@ -174,19 +174,37 @@ app.post('/api/anime/status', authenticateToken, async (req, res) => {
     await pool.query(
       `INSERT INTO user_animes (user_id, anime_id, status)
        VALUES ($1, $2, $3)
-       ON CONFLICT (user_id, anime_id)
-       DO UPDATE SET 
-         status = EXCLUDED.status,
-         updated_at = CURRENT_TIMESTAMP`,
+       ON CONFLICT (user_id, anime_id, status)
+       DO NOTHING`,
       [userId, animeId, status]
     );
     
-    res.json({ message: 'Estado actualizado', status });
- } catch (err) {
-  console.error('💥 Error anime status:', err.message);
-  res.status(500).json({ error: 'Error guardando estado', details: err.message });
-}
+    res.json({ message: `Estado '${status}' guardado correctamente.` });
+  } catch (err) {
+    console.error('💥 Error anime status:', err.message);
+    res.status(500).json({ error: 'Error guardando estado', details: err.message });
+  }
+});
 
+// --- Eliminar un estado de anime (PROTEGIDO)
+app.delete('/api/anime/status', authenticateToken, async (req, res) => {
+  const { animeId, status } = req.body;
+  const userId = req.user.id;
+
+  if (!animeId || !status) {
+    return res.status(400).json({ error: 'Datos incompletos' });
+  }
+
+  try {
+    await pool.query(
+      `DELETE FROM user_animes WHERE user_id = $1 AND anime_id = $2 AND status = $3`,
+      [userId, animeId, status]
+    );
+    res.json({ message: `Estado '${status}' eliminado correctamente.` });
+  } catch (err) {
+    console.error('💥 Error al eliminar estado:', err);
+    res.status(500).json({ error: 'Error eliminando estado' });
+  }
 });
 
 

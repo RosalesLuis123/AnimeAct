@@ -66,6 +66,19 @@ export class AuthService {
     const userId = JSON.parse(localStorage.getItem('user') || '{}').id;
     return this.http.get(`${this.apiUrl}/anime/status/${userId}`, { headers });
   }
+  // Eliminar estado de anime
+deleteAnimeStatus(animeId: number, status: string) {
+  const token = this.getToken();
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  });
+
+  return this.http.request('delete', `${this.apiUrl}/anime/status`, {
+    headers,
+    body: { animeId, status }
+  });
+}
+
 
   getToken(): string | null {
     const token = localStorage.getItem('token');

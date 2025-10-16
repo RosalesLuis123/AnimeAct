@@ -62,6 +62,18 @@
     }
   }
 }
+.btn-remove {
+  margin-top: 5px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btn-remove:hover {
+  background: #c0392b;
+}
 
 .not-logged {
   text-align: center;

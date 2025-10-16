@@ -35,41 +35,57 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  fetchAnimeDetails() {
-    if (!this.userAnimes.length) {
-      this.loadingAnimes = false;
-      return;
-    }
-    const requests = this.userAnimes.map(anime =>
-      this.animeService.getAnimeDetails(anime.anime_id)
-    );
-    forkJoin(requests).subscribe({
-      next: (responses: any[]) => {
-        this.userAnimes = this.userAnimes.map((anime, index) => {
-          const details = responses[index].data;
-          console.log(`Detalles del anime ${anime.anime_id}:`, details);
-          return {
-            ...anime,
-            title: details?.title || 'Desconocido',
-            image_url: details?.images?.jpg?.image_url || 'https://via.placeholder.com/150'
-          };
-        });
-        console.log('Animes actualizados:', this.userAnimes);
-        this.loadingAnimes = false;
-      },
-      error: (err) => {
-        console.error('❌ Error al cargar detalles:', err);
-        this.userAnimes = this.userAnimes.map(anime => ({
-          ...anime,
-          title: 'Desconocido',
-          image_url: 'https://via.placeholder.com/150'
-        }));
-        this.loadingAnimes = false;
-      }
-    });
+ fetchAnimeDetails() {
+  if (!this.userAnimes.length) {
+    this.loadingAnimes = false;
+    return;
   }
 
-  filterByStatus(status: string) {
-    return this.userAnimes.filter(a => a.status.includes(status));
-  }
+  // ⚡ Evita llamadas duplicadas para el mismo anime_id
+  const uniqueAnimeIds = [...new Set(this.userAnimes.map(a => a.anime_id))];
+
+  const requests = uniqueAnimeIds.map(id =>
+    this.animeService.getAnimeDetails(id)
+  );
+
+  forkJoin(requests).subscribe({
+    next: (responses: any[]) => {
+      const detailsMap = new Map<number, any>();
+      uniqueAnimeIds.forEach((id, i) => detailsMap.set(id, responses[i].data));
+
+      this.userAnimes = this.userAnimes.map(anime => {
+        const details = detailsMap.get(anime.anime_id);
+        return {
+          ...anime,
+          title: details?.title || 'Desconocido',
+          image_url: details?.images?.jpg?.image_url || 'https://via.placeholder.com/150'
+        };
+      });
+
+      console.log('✅ Animes actualizados:', this.userAnimes);
+      this.loadingAnimes = false;
+    },
+    error: (err) => {
+      console.error('❌ Error al cargar detalles:', err);
+      this.loadingAnimes = false;
+    }
+  });
+}
+
+
+ filterByStatus(status: string) {
+  return this.userAnimes.filter(a => a.status?.toLowerCase() === status.toLowerCase());
+}
+
+removeStatus(anime: any) {
+  if (!confirm(`¿Quitar '${anime.status}' de "${anime.title}"?`)) return;
+
+  this.authService.deleteAnimeStatus(anime.anime_id, anime.status).subscribe({
+    next: () => {
+      this.userAnimes = this.userAnimes.filter(a => !(a.anime_id === anime.anime_id && a.status === anime.status));
+    },
+    error: (err) => console.error('❌ Error al eliminar estado:', err)
+  });
+}
+
 }
