@@ -48,7 +48,7 @@ Antes de comenzar, asegúrate de tener instalado:
 
 1️⃣ **Clona este repositorio:**
 ```bash
-git clone https://github.com/tuusuario/anime-act.git
+git clone https://github.com/RosalesLuis123/anime-act.git
 cd anime-act/anime-act-backend'
 ```
 2️⃣ **Instala las dependencias:**
@@ -106,34 +106,37 @@ POST	/api/anime/status	Guarda o quita un estado de anime	✅
 GET	/api/anime/status/:userId	Lista los animes del usuario	✅
 
 Ejemplo de POST /api/anime/status:
-
+```bash
 {
   "animeId": 5114,
   "status": "favorito"
 }
+```
 💻 Frontend (Angular)
 
 1️⃣ Desde la carpeta raíz:
-
+```bash
 cd anime-act/anime-act-frontend
-
+```
 
 2️⃣ Instala dependencias:
-
+```bash
 npm install
-
+```
 
 3️⃣ Inicia el servidor Angular:
-
+```bash
 ng serve
-
+```
 
 4️⃣ Abre tu navegador en:
+
 👉 http://localhost:4200
 
 🎨 Funcionalidades
 
 ✅ Registro e inicio de sesión con validación JWT
+✅ Ver animes por calendario y categorias
 ✅ Visualización de información del anime (título, imagen, puntuación, sinopsis, tráiler)
 ✅ Marcar como:
 
@@ -151,10 +154,14 @@ ng serve
 
 🧰 Scripts útiles
 🔁 Reiniciar la base de datos:
+```bash
 psql -U postgres -d anime_act -f database/anime_act_schema.sql
-
+```
 🧪 Correr el backend en modo desarrollo:
+```bash
 npm run dev
-
+```
 🧱 Construir el frontend para producción:
+```bash
 ng build --prod
+```
